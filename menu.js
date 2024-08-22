@@ -63,7 +63,7 @@ fetch('locations.json')
         const displayRooms = (floor, building, location) => {
             const buttons = floor.rooms.map((room) => ({
                 label: room,
-                onClick: () => console.log(`Selected room: ${room} on ${floor.name} in ${building.name} at ${location.name}`)
+                onClick: () => console.log(room)
             }));
             appendButtons(buttons, `Room`, () => displayFloors(building, location));
         }
