@@ -1,0 +1,41 @@
+[
+    {
+      "name": "Roeterseilandcampus",
+      "floors": [
+        {
+          "name": "1",
+          "rooms": ["Room 1", "Room 2", "Room 3"]
+        },
+        {
+          "name": "2",
+          "rooms": ["Room 4", "Room 5", "Room 6"]
+        }
+      ]
+    },
+    {
+      "name": "Science park",
+      "floors": [
+        {
+          "name": "1",
+          "rooms": ["Room 7", "Room 8", "Room 9"]
+        },
+        {
+          "name": "2",
+          "rooms": ["Room 10", "Room 11", "Room 12"]
+        }
+      ]
+    },
+    {
+        "name": "Oudemanhuispoort",
+        "floors": [
+          {
+            "name": "1",
+            "rooms": ["Room 7", "Room 8", "Room 9"]
+          },
+          {
+            "name": "2",
+            "rooms": ["Room 10", "Room 11", "Room 12"]
+          }
+        ]
+      }
+  ]

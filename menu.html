@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-Layer Menu System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Your existing styles */
+        body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #00000047; /* Add this line */
+        }
+    </style>
+  <style>
+      .menu-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+        
+        .menu-header {
+            font-size: 8px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .button {
+            margin: 5px;
+            font-size: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4c4caf;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: #26265a;
+        }
+        
+        .back-button {  
+        position: absolute;
+        top: 5px;
+        left: 50%; /* Center the button horizontally */
+        transform: translateX(-50%); /* Adjust the position to center */
+        background-color: #00000000;
+        color: #fff;
+        border: none;
+        border-radius: 50%; /* Make the padding a circle */
+        font-size: 24px; /* Increase font size for the arrow */
+        width: 30px; /* Set a fixed width to maintain the circle shape */
+        height: 30px; /* Set a fixed height to maintain the circle shape */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .back-button::before {
+            content: "\2190"; /* Unicode character for a left arrow */
+        }
+        
+        .back-button:hover {
+            background-color: #0000002f;
+        }
+  </style>
+  <script>
+    // Load the locations from the JSON file
+    fetch('locations.json')
+      .then(response => response.json())
+      .then(locations => {
+        // Create a function to create a button element
+        const createButton = (label) => {
+          const button = document.createElement('button');
+          button.className = 'button';
+          button.textContent = label;
+          return button;
+        }
+        
+        // Create a function to append buttons to the menu container
+        const appendButtons = (buttons, menuHeader) => {
+          const menuContainer = document.querySelector('.menu-container');
+          menuContainer.innerHTML = '';
+          const header = document.createElement('div');
+          header.className = 'menu-header';
+          header.textContent = menuHeader;
+          menuContainer.appendChild(header);
+          buttons.forEach((button) => {
+            const buttonElement = createButton(button.label);
+            buttonElement.addEventListener('click', button.onClick);
+            menuContainer.appendChild(buttonElement);
+          });
+        }
+        
+        // Create a function to display the locations
+        const displayLocations = () => {
+          const buttons = locations.map((location) => ({
+            label: location.name,
+            onClick: () => displayFloors(location)
+          }));
+          appendButtons(buttons, 'Select a Location');
+        }
+        
+        // Create a function to display the floors for a location
+        const displayFloors = (location) => {
+          const buttons = location.floors.map((floor) => ({
+            label: floor.name,
+            onClick: () => displayRooms(floor, location)
+          }));
+          appendButtons(buttons, `Floors at ${location.name}`);
+        }
+
+        // Create a function to display the rooms for a floor and location
+        const displayRooms = (floor, location) => {
+          const buttons = floor.rooms.map((room) => ({
+            label: room,
+            onClick: () => console.log(`Selected room: ${room} on ${floor.name} at ${location.name}`)
+          }));
+          appendButtons(buttons, `Rooms on ${floor.name} at ${location.name}`);
+        }
+        
+        // Create a back button
+        const backButton = document.createElement('button');
+        backButton.className = 'back-button';
+        // backButton.textContent = 'Back';
+        backButton.addEventListener('click', () => {
+          if (document.querySelector('.menu-header').textContent === 'Select a Location') {
+            // Do nothing
+          } else if (document.querySelector('.menu-header').textContent.includes('Floors at')) {
+            displayLocations();
+          } else if (document.querySelector('.menu-header').textContent.includes('Rooms on')) {
+            const locationName = document.querySelector('.menu-header').textContent.split(' at ')[1];
+            const location = locations.find((location) => location.name === locationName);
+            displayFloors(location);
+          }
+        });
+        document.body.appendChild(backButton);
+        
+        // Call the displayLocations function
+        displayLocations();
+      })
+      .catch(error => console.error('Error loading locations:', error));
+  </script>
+</head>
+<body>
+  <div class="menu-container"></div>
+</body>
+</html>

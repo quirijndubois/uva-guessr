@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
+    iframe {
+    border-radius: 20px;
+    transition: transform 0.3s; /* Add this line */
+    transform-origin: bottom right; /* Add this line */
+    }
+
+    iframe:hover {
+    transform: scale(2); /* Add this line */
+    }
     html, body {
         margin: 0;
         padding: 0;
@@ -60,6 +69,8 @@ getRandomSubfolder(function(randomSubfolder) {
     }
 });
 </script>
+
+<iframe src="menu.html" frameborder="0" width="150" height="200" style="position: fixed; bottom: 0; right: 0;"></iframe>
 
 </body>
 </html>
