@@ -55,7 +55,7 @@
         }
 
         .mini-box {
-            border-radius: 20px;
+            border-radius: 15px;
             background-color: #00000061;
             padding: 10px;
         }
@@ -74,7 +74,7 @@
                     const subfolders = data.trim().split('\n').filter(Boolean); // Filter out empty lines
                     const randomIndex = Math.floor(Math.random() * subfolders.length);
                     const randomSubfolder = subfolders[randomIndex];
-                    callback(randomSubfolder);
+                    callback(randomSubfolder); 
                 })
                 .catch(error => {
                     console.error('Error fetching subfolders:', error);
@@ -115,7 +115,10 @@
 
     <div style="position: absolute; bottom: 10px; left: 10px; text-align: left;" class="mini-box">
         <a href="https://quirijndubois.nl" target="_blank">by Quirijn du Bois</a>
+    </div>
 
+    <div style="position: absolute; top: 10px; left: 40px; text-align: left;" class="mini-box">
+        <a href="https://github.com/quirijndubois/uva-guessr/issues/new" target="_blank">Report a bug</a>
     </div>
 </body>
 
