@@ -1,63 +1,86 @@
 [
     {
-        "name": "Roeterseilandcampus",
-        "floors": [
+        "name": "Location 1",
+        "buildings": [
             {
-                "name": "1",
-                "rooms": [
-                    "Room 1",
-                    "Room 2",
-                    "Room 3"
+                "name": "Building 1",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 1",
+                            "Room 2"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 3",
+                            "Room 4"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "2",
-                "rooms": [
-                    "Room 4",
-                    "Room 5",
-                    "Room 6"
+                "name": "Building 2",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 5",
+                            "Room 6"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 7",
+                            "Room 8"
+                        ]
+                    }
                 ]
             }
         ]
     },
     {
-        "name": "Science park",
-        "floors": [
+        "name": "Location 2",
+        "buildings": [
             {
-                "name": "1",
-                "rooms": [
-                    "Room 7",
-                    "Room 8",
-                    "Room 9"
+                "name": "Building 3",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 9",
+                            "Room 10"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 11",
+                            "Room 12"
+                        ]
+                    }
                 ]
             },
             {
-                "name": "2",
-                "rooms": [
-                    "Room 10",
-                    "Room 11",
-                    "Room 12"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Oudemanhuispoort",
-        "floors": [
-            {
-                "name": "1",
-                "rooms": [
-                    "Room 7",
-                    "Room 8",
-                    "Room 9"
-                ]
-            },
-            {
-                "name": "2",
-                "rooms": [
-                    "Room 10",
-                    "Room 11",
-                    "Room 12"
+                "name": "Building 4",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 13",
+                            "Room 14"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 15",
+                            "Room 16"
+                        ]
+                    }
                 ]
             }
         ]
