@@ -8,15 +8,32 @@
                     {
                         "name": "Floor 1",
                         "rooms": [
-                            "Room 1",
-                            "Room 2"
+                            "645.A A1.04",
+                            "645.A A1.06",
+                            "645.A A1.08",
+                            "645.A A1.10",
+                            "645.A A1.12",
+                            "645.A A1.14",
+                            "645.A A1.18"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "D",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "645.D D1.111",
+                            "645.D D1.162"
                         ]
                     },
                     {
                         "name": "Floor 2",
                         "rooms": [
-                            "Room 3",
-                            "Room 4"
+                            "110.D D0.09",
+                            "110.D D0.08"
                         ]
                     }
                 ]
@@ -25,17 +42,9 @@
                 "name": "G",
                 "floors": [
                     {
-                        "name": "Floor 1",
-                        "rooms": [
-                            "Room 1",
-                            "Room 2"
-                        ]
-                    },
-                    {
                         "name": "Floor 2",
                         "rooms": [
-                            "Room 3",
-                            "Room 4"
+                            "630 G2.13"
                         ]
                     }
                 ]
@@ -46,15 +55,8 @@
                     {
                         "name": "Floor 1",
                         "rooms": [
-                            "Room 5",
-                            "Room 6"
-                        ]
-                    },
-                    {
-                        "name": "Floor 2",
-                        "rooms": [
-                            "Room 7",
-                            "Room 8"
+                            "648.L L1.01",
+                            "648.L L1.02"
                         ]
                     }
                 ]
@@ -65,39 +67,12 @@
         "name": "Oudemanhuispoort",
         "buildings": [
             {
-                "name": "Gebouw 1",
+                "name": "Gebouw F",
                 "floors": [
-                    {
-                        "name": "Floor 1",
-                        "rooms": [
-                            "Room 9",
-                            "Room 10"
-                        ]
-                    },
                     {
                         "name": "Floor 2",
                         "rooms": [
-                            "Room 11",
-                            "Room 12"
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "Gebouw 2",
-                "floors": [
-                    {
-                        "name": "Floor 1",
-                        "rooms": [
-                            "Room 13",
-                            "Room 14"
-                        ]
-                    },
-                    {
-                        "name": "Floor 2",
-                        "rooms": [
-                            "Room 15",
-                            "Room 16"
+                            "650 F2.04"
                         ]
                     }
                 ]
