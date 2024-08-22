@@ -38,7 +38,7 @@ fetch('locations.json')
                 label: location.name,
                 onClick: () => displayBuildings(location)
             }));
-            appendButtons(buttons, 'Locations');
+            appendButtons(buttons, 'Location');
         }
 
         // Create a function to display the buildings for a location
@@ -47,7 +47,7 @@ fetch('locations.json')
                 label: building.name,
                 onClick: () => displayFloors(building, location)
             }));
-            appendButtons(buttons, `Buildings at ${location.name}`, () => displayLocations());
+            appendButtons(buttons, `Building`, () => displayLocations());
         }
 
         // Create a function to display the floors for a building and location
@@ -56,7 +56,7 @@ fetch('locations.json')
                 label: floor.name,
                 onClick: () => displayRooms(floor, building, location)
             }));
-            appendButtons(buttons, `Floors in ${building.name} at ${location.name}`, () => displayBuildings(location));
+            appendButtons(buttons, `Floor`, () => displayBuildings(location));
         }
 
         // Create a function to display the rooms for a floor, building, and location
@@ -65,7 +65,7 @@ fetch('locations.json')
                 label: room,
                 onClick: () => console.log(`Selected room: ${room} on ${floor.name} in ${building.name} at ${location.name}`)
             }));
-            appendButtons(buttons, `Rooms on ${floor.name} in ${building.name} at ${location.name}`, () => displayFloors(building, location));
+            appendButtons(buttons, `Room`, () => displayFloors(building, location));
         }
 
         // Start by displaying the locations

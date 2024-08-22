@@ -1,44 +1,13 @@
 [
     {
-        "name": "Location 1",
+        "name": "Science Park",
         "buildings": [
             {
-                "name": "Building 1",
+                "name": "A",
                 "floors": [
                     {
                         "name": "Floor 1",
                         "rooms": [
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
-                            "Room 1",
                             "Room 1",
                             "Room 2"
                         ]
@@ -53,7 +22,26 @@
                 ]
             },
             {
-                "name": "Building 2",
+                "name": "G",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 1",
+                            "Room 2"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 3",
+                            "Room 4"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Lab",
                 "floors": [
                     {
                         "name": "Floor 1",
@@ -74,7 +62,50 @@
         ]
     },
     {
-        "name": "Location 2",
+        "name": "Oudemanhuispoort",
+        "buildings": [
+            {
+                "name": "Gebouw 1",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 9",
+                            "Room 10"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 11",
+                            "Room 12"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Gebouw 2",
+                "floors": [
+                    {
+                        "name": "Floor 1",
+                        "rooms": [
+                            "Room 13",
+                            "Room 14"
+                        ]
+                    },
+                    {
+                        "name": "Floor 2",
+                        "rooms": [
+                            "Room 15",
+                            "Room 16"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Roeterseilandcampus",
         "buildings": [
             {
                 "name": "Building 3",
