@@ -11,15 +11,20 @@
         }
     </style>
   <style>
-      .menu-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
+        .menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        }
+
+        .button:first-child {
+        margin-top: 50vh; /* adjust this value to your liking */
         }
         
         .menu-header {
+            margin-top: 30px;
             font-size: 8px;
             font-weight: bold;
             margin-bottom: 5px;
@@ -41,22 +46,23 @@
             background-color: #26265a;
         }
         
-        .back-button {  
-        position: absolute;
-        top: 5px;
-        left: 50%; /* Center the button horizontally */
-        transform: translateX(-50%); /* Adjust the position to center */
-        background-color: #00000000;
-        color: #fff;
-        border: none;
-        border-radius: 50%; /* Make the padding a circle */
-        font-size: 24px; /* Increase font size for the arrow */
-        width: 30px; /* Set a fixed width to maintain the circle shape */
-        height: 30px; /* Set a fixed height to maintain the circle shape */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.back-button {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00000000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Add this line to ensure the button stays on top */
+}
 
         .back-button::before {
             content: "\2190"; /* Unicode character for a left arrow */
