@@ -53,6 +53,8 @@ fetch('locations.json')
             appendButtons(buttons, `Rooms on ${floor.name} at ${location.name}`);
         }
 
+
+
         // Create a back button
         const backButton = document.createElement('button');
         backButton.className = 'back-button';

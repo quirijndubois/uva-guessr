@@ -1,76 +1,86 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UvA Guessr</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
-    iframe {
-    border-radius: 20px;
-    transition: transform 0.3s; /* Add this line */
-    transform-origin: bottom right; /* Add this line */
-    }
+        iframe {
+            border-radius: 20px;
+            transition: transform 0.3s;
+            /* Add this line */
+            transform-origin: bottom right;
+            /* Add this line */
+        }
 
-    iframe:hover {
-    transform: scale(2); /* Add this line */
-    }
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-    #panorama {
-        width: 100%;
-        height: 100%;
-    }
+        iframe:hover {
+            transform: scale(2);
+            /* Add this line */
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #panorama {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
+
 <body>
 
-<div id="panorama"></div>
-<script>
-// Function to fetch a random subfolder from rooms.txt
-function getRandomSubfolder(callback) {
-    fetch('rooms.txt')
-    .then(response => response.text())
-    .then(data => {
-        const subfolders = data.trim().split('\n').filter(Boolean); // Filter out empty lines
-        const randomIndex = Math.floor(Math.random() * subfolders.length);
-        const randomSubfolder = subfolders[randomIndex];
-        callback(randomSubfolder);
-    })
-    .catch(error => {
-        console.error('Error fetching subfolders:', error);
-        callback(null);
-    });
-}
+    <div id="panorama"></div>
+    <script>
+        // Function to fetch a random subfolder from rooms.txt
+        function getRandomSubfolder(callback) {
+            fetch('rooms.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const subfolders = data.trim().split('\n').filter(Boolean); // Filter out empty lines
+                    const randomIndex = Math.floor(Math.random() * subfolders.length);
+                    const randomSubfolder = subfolders[randomIndex];
+                    callback(randomSubfolder);
+                })
+                .catch(error => {
+                    console.error('Error fetching subfolders:', error);
+                    callback(null);
+                });
+        }
 
-// Get a random subfolder and set it as the basePath
-getRandomSubfolder(function(randomSubfolder) {
-    if (randomSubfolder) {
-        pannellum.viewer('panorama', {
-            "type": "multires",
-            "multiRes": {
-                "basePath": "images/" + randomSubfolder.trim(), // Modify basePath here
-                "path": "/%s%y_%x",
-                "fallbackPath": "/fallback/%s",
-                "extension": "jpg",
-                "tileResolution": 512,
-                "maxLevel": 1,
-                "cubeResolution": 10000
+        // Get a random subfolder and set it as the basePath
+        getRandomSubfolder(function (randomSubfolder) {
+            if (randomSubfolder) {
+                pannellum.viewer('panorama', {
+                    "type": "multires",
+                    "multiRes": {
+                        "basePath": "images/" + randomSubfolder.trim(), // Modify basePath here
+                        "path": "/%s%y_%x",
+                        "fallbackPath": "/fallback/%s",
+                        "extension": "jpg",
+                        "tileResolution": 512,
+                        "maxLevel": 1,
+                        "cubeResolution": 10000
+                    }
+                });
+            } else {
+                console.error('Failed to get random subfolder.');
             }
         });
-    } else {
-        console.error('Failed to get random subfolder.');
-    }
-});
-</script>
+    </script>
 
-<iframe src="menu.html" frameborder="0" width="150" height="200" style="position: fixed; bottom: 0; right: 0;"></iframe>
+    <iframe src="menu.html" frameborder="0" width="150" height="200"
+        style="position: fixed; bottom: 0; right: 0;"></iframe>
 
 </body>
+
 </html>
