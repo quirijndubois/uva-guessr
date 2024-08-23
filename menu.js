@@ -63,7 +63,17 @@ fetch('locations.json')
         const displayRooms = (floor, building, location) => {
             const buttons = floor.rooms.map((room) => ({
                 label: room.name,
-                onClick: () => console.log(room.id)
+                onClick: () => {
+                    const confirmButton = {
+                        label: 'Confirm',
+                        onClick: () => console.log(room.id)
+                    };
+                    const cancelButton = {
+                        label: 'Cancel',
+                        onClick: () => displayRooms(floor, building, location)
+                    };
+                    appendButtons([confirmButton, cancelButton], `${room.name}?`);
+                }
             }));
             appendButtons(buttons, `Room`, () => displayFloors(building, location));
         }
