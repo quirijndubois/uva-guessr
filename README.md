@@ -14,4 +14,4 @@ docker-compose up -d
 ```
 
 ## Contributing
-If you read this and want to contribute, please just add some rooms to the rooms.csv. For now this is a bit tedious, because you have to manually check if each room exists and has panorama images on the https://rooster.uva.nl
+If you read this and want to contribute, please just add some rooms to the rooms.csv. For now this is a bit tedious, because you have to manually check if each room exists and has panorama images on https://rooster.uva.nl
