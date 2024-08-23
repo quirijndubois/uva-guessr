@@ -98,6 +98,16 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .answer {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -122,6 +132,7 @@
                 });
         }
         function result(ID, guess) {
+            document.querySelector('iframe').style.transform = 'scale(0)';
             if (ID == guess) {
                 console.log("correct");
                 document.getElementById("correct-text").style.display = "block";
@@ -132,6 +143,15 @@
                 document.getElementById("incorrect-text").style.display = "block";
                 document.getElementById("correct-text").style.display = "none";
             }
+
+            // Create a new element to display the randomID
+            const randomIDElement = document.createElement('div');
+            randomIDElement.textContent = "Answer ID: " + ID;
+            randomIDElement.classList.add('answer');
+
+            // Append the randomIDElement to the body
+            document.body.appendChild(randomIDElement);
+
             const nextButton = document.createElement('button');
             nextButton.textContent = 'Next';
             nextButton.classList.add('next-button');
