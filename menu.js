@@ -66,7 +66,9 @@ fetch('locations.json')
                 onClick: () => {
                     const confirmButton = {
                         label: 'Confirm',
-                        onClick: () => console.log(room.id)
+                        onClick: () => {
+                            window.parent.postMessage(room.id, '*'); // The '*' allows the message to be sent to any domain.
+                        }
                     };
                     const cancelButton = {
                         label: 'Cancel',

@@ -59,6 +59,30 @@
             background-color: #00000061;
             padding: 10px;
         }
+
+        .correct-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: rgb(0, 128, 13);
+            user-select: none;
+            font-weight: bold;
+        }
+
+        .incorrect-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: rgb(128, 0, 0);
+            user-select: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -67,7 +91,7 @@
     <div id="panorama"></div>
     <script>
         // Function to fetch a random subfolder from rooms.txt
-        function getRandomSubfolder(callback) {
+        function getRandomID(callback) {
             fetch('locations.csv')
                 .then(response => response.text())
                 .then(data => {
@@ -82,14 +106,26 @@
                     callback(null);
                 });
         }
+        function result(ID, guess) {
+            if (ID == guess) {
+                console.log("correct");
+                document.getElementById("correct-text").style.display = "block";
+                document.getElementById("incorrect-text").style.display = "none";
+            }
+            else {
+                console.log("incorrect");
+                document.getElementById("incorrect-text").style.display = "block";
+                document.getElementById("correct-text").style.display = "none";
+            }
+        }
 
         // Get a random subfolder and set it as the basePath
-        getRandomSubfolder(function (randomSubfolder) {
-            if (randomSubfolder) {
+        getRandomID(function (randomID) {
+            if (randomID) {
                 pannellum.viewer('panorama', {
                     "type": "multires",
                     "multiRes": {
-                        "basePath": "images/" + randomSubfolder.trim(), // Modify basePath here
+                        "basePath": "images/" + randomID.trim(), // Modify basePath here
                         "path": "/%s%y_%x",
                         "fallbackPath": "/fallback/%s",
                         "extension": "jpg",
@@ -101,9 +137,15 @@
             } else {
                 console.error('Failed to get random subfolder.');
             }
+            window.addEventListener("message", function (event) {
+                const guess = event.data;
+                result(randomID, guess);
+            });
         });
-    </script>
 
+
+
+    </script>
     <iframe src="menu.html" frameborder="0" width="225" height="300"
         style="position: fixed; bottom: 10px; right: 10px;"></iframe>
 
@@ -120,6 +162,13 @@
 
     <div style="position: absolute; top: 10px; left: 40px; text-align: left;" class="mini-box">
         <a href="https://github.com/quirijndubois/uva-guessr/issues/new" target="_blank">Report a bug</a>
+    </div>
+
+    <div id="correct-text" class="correct-message">
+        Correct!
+    </div>
+    <div id="incorrect-text" class="incorrect-message">
+        Incorrect!
     </div>
 </body>
 
