@@ -1,0 +1,16 @@
+Location,Building,Floor,Room,ID
+Science Park,F,2,F2.04,650 F2.04
+Science Park,Lab,1,L1.01,648.L L1.01
+Science Park,Lab,1,L1.02,648.L L1.02
+Science Park,G,2,G2.13,630 G2.13
+Science Park,D,1,D1.162,645.D D1.162
+Science Park,D,1,D1.111,645.D D1.111
+Science Park,A,1,A1.04,645.A A1.04
+Science Park,A,1,A1.06,645.A A1.06
+Science Park,A,1,A1.08,645.A A1.08
+Science Park,A,1,A1.10,645.A A1.10
+Science Park,A,1,A1.12,645.A A1.12
+Science Park,A,1,A1.14,645.A A1.14
+Science Park,A,1,A1.18,645.A A1.18
+Oudemanhuispoort,D,0,D0.09,110.D D0.09
+Oudemanhuispoort,D,0,D0.08,110.D D0.08

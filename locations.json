@@ -1,20 +1,64 @@
 [
     {
+        "name": "Oudemanhuispoort",
+        "buildings": [
+            {
+                "name": "D",
+                "floors": [
+                    {
+                        "name": 0,
+                        "rooms": [
+                            {
+                                "id": "110.D D0.09",
+                                "name": "D0.09"
+                            },
+                            {
+                                "id": "110.D D0.08",
+                                "name": "D0.08"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "name": "Science Park",
         "buildings": [
             {
                 "name": "A",
                 "floors": [
                     {
-                        "name": "Floor 1",
+                        "name": 1,
                         "rooms": [
-                            "645.A A1.04",
-                            "645.A A1.06",
-                            "645.A A1.08",
-                            "645.A A1.10",
-                            "645.A A1.12",
-                            "645.A A1.14",
-                            "645.A A1.18"
+                            {
+                                "id": "645.A A1.04",
+                                "name": "A1.04"
+                            },
+                            {
+                                "id": "645.A A1.06",
+                                "name": "A1.06"
+                            },
+                            {
+                                "id": "645.A A1.08",
+                                "name": "A1.08"
+                            },
+                            {
+                                "id": "645.A A1.10",
+                                "name": "A1.10"
+                            },
+                            {
+                                "id": "645.A A1.12",
+                                "name": "A1.12"
+                            },
+                            {
+                                "id": "645.A A1.14",
+                                "name": "A1.14"
+                            },
+                            {
+                                "id": "645.A A1.18",
+                                "name": "A1.18"
+                            }
                         ]
                     }
                 ]
@@ -23,17 +67,30 @@
                 "name": "D",
                 "floors": [
                     {
-                        "name": "Floor 1",
+                        "name": 1,
                         "rooms": [
-                            "645.D D1.111",
-                            "645.D D1.162"
+                            {
+                                "id": "645.D D1.162",
+                                "name": "D1.162"
+                            },
+                            {
+                                "id": "645.D D1.111",
+                                "name": "D1.111"
+                            }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                "name": "F",
+                "floors": [
                     {
-                        "name": "Floor 2",
+                        "name": 2,
                         "rooms": [
-                            "110.D D0.09",
-                            "110.D D0.08"
+                            {
+                                "id": "650 F2.04",
+                                "name": "F2.04"
+                            }
                         ]
                     }
                 ]
@@ -42,9 +99,12 @@
                 "name": "G",
                 "floors": [
                     {
-                        "name": "Floor 2",
+                        "name": 2,
                         "rooms": [
-                            "630 G2.13"
+                            {
+                                "id": "630 G2.13",
+                                "name": "G2.13"
+                            }
                         ]
                     }
                 ]
@@ -53,69 +113,16 @@
                 "name": "Lab",
                 "floors": [
                     {
-                        "name": "Floor 1",
+                        "name": 1,
                         "rooms": [
-                            "648.L L1.01",
-                            "648.L L1.02"
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Oudemanhuispoort",
-        "buildings": [
-            {
-                "name": "Gebouw F",
-                "floors": [
-                    {
-                        "name": "Floor 2",
-                        "rooms": [
-                            "650 F2.04"
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Roeterseilandcampus",
-        "buildings": [
-            {
-                "name": "Building 3",
-                "floors": [
-                    {
-                        "name": "Floor 1",
-                        "rooms": [
-                            "Room 9",
-                            "Room 10"
-                        ]
-                    },
-                    {
-                        "name": "Floor 2",
-                        "rooms": [
-                            "Room 11",
-                            "Room 12"
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "Building 4",
-                "floors": [
-                    {
-                        "name": "Floor 1",
-                        "rooms": [
-                            "Room 13",
-                            "Room 14"
-                        ]
-                    },
-                    {
-                        "name": "Floor 2",
-                        "rooms": [
-                            "Room 15",
-                            "Room 16"
+                            {
+                                "id": "648.L L1.01",
+                                "name": "L1.01"
+                            },
+                            {
+                                "id": "648.L L1.02",
+                                "name": "L1.02"
+                            }
                         ]
                     }
                 ]
