@@ -62,8 +62,8 @@ fetch('locations.json')
         // Create a function to display the rooms for a floor, building, and location
         const displayRooms = (floor, building, location) => {
             const buttons = floor.rooms.map((room) => ({
-                label: room,
-                onClick: () => console.log(room)
+                label: room.name,
+                onClick: () => console.log(room.id)
             }));
             appendButtons(buttons, `Room`, () => displayFloors(building, location));
         }

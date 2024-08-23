@@ -94,8 +94,9 @@ locations = pd.read_csv("locations.csv")
 locations_json = locations_to_json(locations)
 with open('locations.json', 'w') as f:
     json.dump(json.loads(locations_to_json(locations)), f, indent=4)
-# rooms = locations["ID"].tolist()
-# for room in rooms:
-#     for side in ["f", "r", "l", "u", "d", "b"]:
-#         title = f"{side}0_0"
-#         save_image(room, title)
+    print("locations.json created.")
+rooms = locations["ID"].tolist()
+for room in rooms:
+    for side in ["f", "r", "l", "u", "d", "b"]:
+        title = f"{side}0_0"
+        save_image(room, title)
