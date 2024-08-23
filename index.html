@@ -122,7 +122,7 @@
                 .then(data => {
                     const rows = data.trim().split('\n');
                     const lastColumn = rows.map(row => row.split(',').pop());
-                    const randomIndex = Math.floor(Math.random() * lastColumn.length);
+                    const randomIndex = Math.floor(Math.random() * (lastColumn.length-1))+1;
                     const randomRoom = lastColumn[randomIndex];
                     callback(randomRoom);
                 })
