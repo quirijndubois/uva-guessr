@@ -15,7 +15,7 @@ python setup.py
 This script downloads the panorama images of all uva rooms in locations.csv from https://rooster.uva.nl. This also generates locations.json, required for the guessing menu.
 
 ### Docker-compose
-The easiest way to host is by using docker-compose:
+The easiest way to host is by using [docker-compose](https://docs.docker.com/compose/).
 ```bash
 docker-compose up -d
 ```
