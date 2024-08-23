@@ -3,6 +3,8 @@ import os
 import pandas as pd
 import json
 
+# This python script download all require panorama images from https://rooster.uva.nl and prepares locations.json based on the rooms.csv file.
+
 
 def create_folder_if_not_exists(folder_path):
     if not os.path.exists(folder_path):
@@ -44,31 +46,21 @@ def read_rooms(filename):
 
 
 def locations_to_json(locations):
-    # Group the locations by 'Location' (campus)
     locations_grouped = locations.groupby('Location')
 
-    # Initialize an empty list to store the JSON data
     data = []
 
-    # Iterate over the grouped locations
     for campus, group in locations_grouped:
-        # Initialize an empty dictionary for the campus
         campus_data = {'name': campus, 'buildings': []}
 
-        # Group the buildings by 'Building'
         buildings_grouped = group.groupby('Building')
 
-        # Iterate over the grouped buildings
         for building, building_group in buildings_grouped:
-            # Initialize an empty dictionary for the building
             building_data = {'name': building, 'floors': []}
 
-            # Group the floors by 'Floor'
             floors_grouped = building_group.groupby('Floor')
 
-            # Iterate over the grouped floors
             for floor, floor_group in floors_grouped:
-                # Initialize an empty list to store the rooms
                 rooms = []
                 for index, row in floor_group.iterrows():
                     room_data = {
@@ -77,16 +69,12 @@ def locations_to_json(locations):
                     }
                     rooms.append(room_data)
 
-                # Add the floor data to the building data
                 building_data['floors'].append({'name': floor, 'rooms': rooms})
 
-            # Add the building data to the campus data
             campus_data['buildings'].append(building_data)
 
-        # Add the campus data to the main data list
         data.append(campus_data)
 
-    # Return the JSON data
     return json.dumps(data, indent=4)
 
 
