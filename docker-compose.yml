@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   web:
-    image: nginx:alpine
+    image: httpd:alpine
     ports:
       - "1234:80"
     volumes:
-      - .:/usr/share/nginx/html:ro
+      - .:/usr/local/apache2/htdocs:ro
     restart: always
