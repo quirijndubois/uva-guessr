@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import json
 
-# This python script downloads all required panorama images from https://rooster.uva.nl and prepares locations.json based on the rooms.csv file.
+# This python script downloads all required panorama images from https://rooster.uva.nl and creates locations.json based on the rooms.csv file.
 
 
 def create_folder_if_not_exists(folder_path):
