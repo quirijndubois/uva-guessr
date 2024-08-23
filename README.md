@@ -5,7 +5,7 @@ Click [here](https://uvaguessr.quirijndubois.nl) to try!
 
 ## Hosting
 
-Get started by running setup.py (Should work in any newer version of python) This script downloads the panorama images of all uva rooms in rooms.txt from https://rooster.uva.nl. 
+Get started by running setup.py (Should work in any newer version of python) This script downloads the panorama images of all uva rooms in locations.csv from https://rooster.uva.nl. This also generates locations.json, required for the guessing menu.
 
 ### Docker-compose
 The easiest way to host is by using docker-compose:
@@ -14,4 +14,4 @@ docker-compose up -d
 ```
 
 ## Contributing
-If you read this and want to contribute, please just add some rooms to the rooms.csv. For now this is a bit tedious, because you have to manually check if each room exists and has panorama images on https://rooster.uva.nl
+If you read this and want to contribute, please just add some rooms to the locations.csv. For now this is a bit tedious, because you have to manually check if each room exists and has panorama images on https://rooster.uva.nl
