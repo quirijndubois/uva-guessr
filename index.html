@@ -83,6 +83,21 @@
             user-select: none;
             font-weight: bold;
         }
+
+        .next-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #0000005b;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -117,6 +132,15 @@
                 document.getElementById("incorrect-text").style.display = "block";
                 document.getElementById("correct-text").style.display = "none";
             }
+            const nextButton = document.createElement('button');
+            nextButton.textContent = 'Next';
+            nextButton.classList.add('next-button');
+
+            nextButton.addEventListener('click', function () {
+                window.location.reload();
+            });
+
+            document.body.appendChild(nextButton);
         }
 
         // Get a random subfolder and set it as the basePath
@@ -124,6 +148,7 @@
             if (randomID) {
                 pannellum.viewer('panorama', {
                     "type": "multires",
+                    "autoLoad": true,
                     "multiRes": {
                         "basePath": "images/" + randomID.trim(), // Modify basePath here
                         "path": "/%s%y_%x",
