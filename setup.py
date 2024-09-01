@@ -28,13 +28,13 @@ def download_image(url, file_path):
         print(f"An error occurred: {e}")
 
 
-def save_image(room, title):
-    create_folder_if_not_exists(f"public/images/{room}")
+def save_image(room, title, location, folder, level):
+    create_folder_if_not_exists(folder)
 
     # Replace with your image URL
-    url = f"https://rooster.uva.nl/uvazalen/{room}%20pano1/1/{title}.jpg"
+    url = f"https://rooster.uva.nl/uvazalen/{room}%20pano1/{level}/{title}.jpg"
     # Path where you want to save the image
-    file_path = f"public/images/{room}/{title}.jpg"
+    file_path = location
     download_image(url, file_path)
 
 
@@ -94,6 +94,14 @@ if __name__ == "__main__":
     locations_json = locations_to_json(locations)
     rooms = locations["ID"].tolist()
     for room in rooms:
-        for side in ["f", "r", "l", "u", "d", "b"]:
-            title = f"{side}0_0"
-            save_image(room, title)
+
+        res = 3
+        for level in range(1, res+1):
+            for side in ["f", "r", "l", "u", "d", "b"]:
+                for x in range(level):
+                    for y in range(level):
+                        title = f"{side}{x}_{y}"
+                        location_title = f"{side}{x}{y}"
+                        location = f"public/images/{room}/{level}/{location_title}.jpg"
+                        folder = f"public/images/{room}/{level}"
+                        save_image(room, title, location, folder, level)

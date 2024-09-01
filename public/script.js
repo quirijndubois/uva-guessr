@@ -5,7 +5,7 @@ function getRandomID(callback) {
         .then(data => {
             const rows = data.trim().split('\n');
             const lastColumn = rows.map(row => row.split(',').pop());
-            const randomIndex = Math.floor(Math.random() * (lastColumn.length-1))+1;
+            const randomIndex = Math.floor(Math.random() * (lastColumn.length - 1)) + 1;
             const randomRoom = lastColumn[randomIndex];
             callback(randomRoom);
         })
@@ -55,11 +55,10 @@ getRandomID(function (randomID) {
             "autoLoad": true,
             "multiRes": {
                 "basePath": "images/" + randomID.trim(), // Modify basePath here
-                "path": "/%s%y_%x",
-                "fallbackPath": "/fallback/%s",
+                "path": "/%l/%s%y%x",
                 "extension": "jpg",
-                "tileResolution": 512,
-                "maxLevel": 1,
+                "tileResolution": 1,
+                "maxLevel": 3,
                 "cubeResolution": 10000
             }
         });
