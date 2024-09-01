@@ -87,7 +87,7 @@ if __name__ == "__main__":
         print("Please supply either 'docker' or 'dev' as argument.")
         exit(1)
 
-    locations = pd.read_csv("locations.csv")
+    locations = pd.read_csv("public/locations.csv")
     with open('public/locations.json', 'w') as f:
         json.dump(json.loads(locations_to_json(locations)), f, indent=4)
         print("locations.json created.")
