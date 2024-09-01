@@ -8,205 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #00000070;
-            color: white;
-        }
-
-        a {
-            text-decoration: none;
-            color: rgb(255, 255, 255);
-        }
-
-        a:hover {
-            color: rgb(76, 91, 255);
-        }
-
-        iframe {
-            border-radius: 20px;
-            transition: transform 0.3s;
-            transform-origin: bottom right;
-        }
-
-        iframe:hover {
-            transform: scale(2);
-        }
-
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        #panorama {
-            width: 100%;
-            height: 100%;
-        }
-
-        .title-box {
-            border-radius: 20px;
-            background-color: #00000061;
-            padding: 10px;
-        }
-
-        .mini-box {
-            border-radius: 15px;
-            background-color: #00000061;
-            padding: 10px;
-        }
-
-        .correct-message {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 100px;
-            color: rgb(0, 128, 13);
-            user-select: none;
-            font-weight: bold;
-        }
-
-        .incorrect-message {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 100px;
-            color: rgb(128, 0, 0);
-            user-select: none;
-            font-weight: bold;
-        }
-
-        .next-button {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 36px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background-color: #0000005b;
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .answer {
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #fff;
-            font-weight: bold;
-        }
-    </style>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <div id="panorama"></div>
-    <script>
-        // Function to fetch a random subfolder from rooms.txt
-        function getRandomID(callback) {
-            fetch('locations.csv')
-                .then(response => response.text())
-                .then(data => {
-                    const rows = data.trim().split('\n');
-                    const lastColumn = rows.map(row => row.split(',').pop());
-                    const randomIndex = Math.floor(Math.random() * (lastColumn.length-1))+1;
-                    const randomRoom = lastColumn[randomIndex];
-                    callback(randomRoom);
-                })
-                .catch(error => {
-                    console.error('Error fetching subfolders:', error);
-                    callback(null);
-                });
-        }
-        function result(ID, guess) {
-            document.querySelector('iframe').style.transform = 'scale(0)';
-            if (ID == guess) {
-                console.log("correct");
-                document.getElementById("correct-text").style.display = "block";
-                document.getElementById("incorrect-text").style.display = "none";
-            }
-            else {
-                console.log("incorrect");
-                document.getElementById("incorrect-text").style.display = "block";
-                document.getElementById("correct-text").style.display = "none";
-            }
 
-            // Create a new element to display the randomID
-            const randomIDElement = document.createElement('div');
-            randomIDElement.textContent = "Answer ID: " + ID;
-            randomIDElement.classList.add('answer');
-
-            // Append the randomIDElement to the body
-            document.body.appendChild(randomIDElement);
-
-            const nextButton = document.createElement('button');
-            nextButton.textContent = 'Next';
-            nextButton.classList.add('next-button');
-
-            nextButton.addEventListener('click', function () {
-                window.location.reload();
-            });
-
-            document.body.appendChild(nextButton);
-        }
-
-        // Get a random subfolder and set it as the basePath
-        getRandomID(function (randomID) {
-            if (randomID) {
-                pannellum.viewer('panorama', {
-                    "type": "multires",
-                    "autoLoad": true,
-                    "multiRes": {
-                        "basePath": "images/" + randomID.trim(), // Modify basePath here
-                        "path": "/%s%y_%x",
-                        "fallbackPath": "/fallback/%s",
-                        "extension": "jpg",
-                        "tileResolution": 512,
-                        "maxLevel": 1,
-                        "cubeResolution": 10000
-                    }
-                });
-            } else {
-                console.error('Failed to get random subfolder.');
-            }
-            window.addEventListener("message", function (event) {
-                const guess = event.data;
-                result(randomID, guess);
-            });
-        });
-
-
-
-    </script>
-    <iframe src="menu.html" frameborder="0" width="225" height="300"
-        style="position: fixed; bottom: 10px; right: 10px;"></iframe>
-
-    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); text-align: center;">
-        <h1 class="title-box">UvA Guessr</h1>
-    </div>
-    <div style="position: absolute; top: 10px; right: 10px; text-align: left;" class="mini-box">
+    <div id="header">
+        <a href="https://github.com/quirijndubois/uva-guessr/issues/new" target="_blank">Report a bug</a>
+        <a href="">UvA Guessr</a>
         <a href=" https://github.com/quirijndubois/uva-guessr" target="_blank">View on GitHub</a>
     </div>
 
-    <div style="position: absolute; bottom: 10px; left: 10px; text-align: left;" class="mini-box">
-        <a href="https://quirijndubois.nl" target="_blank">by Quirijn du Bois</a>
-    </div>
 
-    <div style="position: absolute; top: 10px; left: 40px; text-align: left;" class="mini-box">
-        <a href="https://github.com/quirijndubois/uva-guessr/issues/new" target="_blank">Report a bug</a>
+    <iframe src="menu.html" frameborder="0" width="225" height="300"
+    style="position: fixed; bottom: 10px; right: 10px;"></iframe>
+
+    <div id="footer">
+        <a href="https://quirijndubois.nl" target="_blank">by Quirijn du Bois</a>
     </div>
 
     <div id="correct-text" class="correct-message">
