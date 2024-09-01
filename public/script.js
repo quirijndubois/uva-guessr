@@ -58,7 +58,7 @@ getRandomID(function (randomID) {
                 "path": "/%l/%s%y%x",
                 "extension": "jpg",
                 "tileResolution": 1,
-                "maxLevel": 3,
+                "maxLevel": 1,
                 "cubeResolution": 10000
             }
         });
