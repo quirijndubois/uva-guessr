@@ -29,12 +29,12 @@ def download_image(url, file_path):
 
 
 def save_image(room, title):
-    create_folder_if_not_exists(f"images/{room}")
+    create_folder_if_not_exists(f"public/images/{room}")
 
     # Replace with your image URL
     url = f"https://rooster.uva.nl/uvazalen/{room}%20pano1/1/{title}.jpg"
     # Path where you want to save the image
-    file_path = f"images/{room}/{title}.jpg"
+    file_path = f"public/images/{room}/{title}.jpg"
     download_image(url, file_path)
 
 
@@ -87,13 +87,8 @@ if __name__ == "__main__":
         print("Please supply either 'docker' or 'dev' as argument.")
         exit(1)
 
-    # Change the directory of our execution, because we might be executed from a different path.
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    os.chdir(dir_path)
-    print(os.getcwd())
-
     locations = pd.read_csv("locations.csv")
-    with open('locations.json', 'w') as f:
+    with open('public/locations.json', 'w') as f:
         json.dump(json.loads(locations_to_json(locations)), f, indent=4)
         print("locations.json created.")
     locations_json = locations_to_json(locations)
@@ -102,8 +97,3 @@ if __name__ == "__main__":
         for side in ["f", "r", "l", "u", "d", "b"]:
             title = f"{side}0_0"
             save_image(room, title)
-
-    if sys.argv[1] == 'dev':
-        shutil.copytree('images', '../public/images')
-        shutil.copy('locations.csv', '../public/locations.csv')
-        shutil.copy('locations.json', '../public/locations.json')
