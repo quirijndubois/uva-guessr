@@ -1,10 +1,11 @@
 version: '3.8'
 
 services:
-  web:
-    image: httpd:alpine
+  app:
+    image: uva-guessr
+    build: .
     ports:
       - "1234:80"
     volumes:
-      - .:/usr/local/apache2/htdocs:ro
+      - ./public:/usr/local/apache2/htdocs
     restart: always

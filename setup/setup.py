@@ -1,9 +1,13 @@
+# This python script downloads all required panorama images from
+# https://rooster.uva.nl
+# and creates locations.json based on the rooms.csv file.
+
 import requests
+import shutil
+import sys
 import os
 import pandas as pd
 import json
-
-# This python script downloads all required panorama images from https://rooster.uva.nl and creates locations.json based on the rooms.csv file.
 
 
 def create_folder_if_not_exists(folder_path):
@@ -78,13 +82,30 @@ def locations_to_json(locations):
     return json.dumps(data, indent=4)
 
 
-locations = pd.read_csv("locations.csv")
-locations_json = locations_to_json(locations)
-with open('locations.json', 'w') as f:
-    json.dump(json.loads(locations_to_json(locations)), f, indent=4)
-    print("locations.json created.")
-rooms = locations["ID"].tolist()
-for room in rooms:
-    for side in ["f", "r", "l", "u", "d", "b"]:
-        title = f"{side}0_0"
-        save_image(room, title)
+if __name__ == "__main__":
+    if len(sys.argv) != 2 or sys.argv[1].lower() != 'docker' and sys.argv[1].lower() != 'dev':
+        print("Please supply either 'docker' or 'dev' as argument.")
+        exit(1);
+    
+    # Change the directory of our execution, because we might be executed from a different path.
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(dir_path)
+    print(os.getcwd())
+
+    # locations = pd.read_csv("locations.csv")
+    # with open('locations.json', 'w') as f:
+    #     json.dump(json.loads(locations_to_json(locations)), f, indent=4)
+    #     print("locations.json created.")
+    # locations_json = locations_to_json(locations)
+    # rooms = locations["ID"].tolist()
+    # for room in rooms:
+    #     for side in ["f", "r", "l", "u", "d", "b"]:
+    #         title = f"{side}0_0"
+    #         save_image(room, title)
+    
+    if sys.argv[1] == 'dev':
+        shutil.copytree('images', '../public/images')
+        shutil.copy('locations.csv', '../public/locations.csv')
+        shutil.copy('locations.json', '../public/locations.json')
+
+
