@@ -132,7 +132,7 @@ a:hover {
 ::-webkit-scrollbar-track {
   margin-top: 20px;
   background: #f1f1f1;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 /* Handle */
