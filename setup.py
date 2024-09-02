@@ -27,14 +27,24 @@ def download_image(url, file_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def get_urls(room):
+    title_acc = []
+    base_url = f"https://rooster.uva.nl/uvazalen/{room}%20pano1"
+    for side in ["f", "r", "l", "u", "d", "b"]:
+        for depth_level in range(1, 4):
+            for title in get_depth_level_title(side, depth_level):
+                title_acc.append(f"{base_url}/{depth_level}/{title}")
+    return title_acc
 
-def save_image(room, title):
-    create_folder_if_not_exists(f"public/images/{room}")
+def get_depth_level_title(side, depth_level):
+    return [f"{side}{x}_{y}.jpg" for x in range(depth_level) for y in range(depth_level)]
 
-    # Replace with your image URL
-    url = f"https://rooster.uva.nl/uvazalen/{room}%20pano1/1/{title}.jpg"
-    # Path where you want to save the image
-    file_path = f"public/images/{room}/{title}.jpg"
+
+def save_image(url, room):
+    split = url.split('/')
+    dir = f"public/images/{room}/{split[-2]}"
+    create_folder_if_not_exists(dir)
+    file_path = f"{dir}/{split[-1]}"
     download_image(url, file_path)
 
 
@@ -94,6 +104,7 @@ if __name__ == "__main__":
     locations_json = locations_to_json(locations)
     rooms = locations["ID"].tolist()
     for room in rooms:
-        for side in ["f", "r", "l", "u", "d", "b"]:
-            title = f"{side}0_0"
-            save_image(room, title)
+        urls = get_urls(room)
+        print(room)
+        for url in urls:
+            save_image(url, room)
