@@ -1,10 +1,21 @@
 
 
-if (localStorage.getItem('round_finished') === 'false' || localStorage.getItem('round_finished') === null) {
+if (localStorage.getItem('round_finished') === null) {
+    localStorage.setItem('round_finished', false);
+}
+
+if (localStorage.getItem('round_finished') === 'false') {
     localStorage.setItem('points', 0);
-    localStorage.setItem('round', 0);
+    localStorage.setItem('round', 1);
 }
 localStorage.setItem('round_finished', false);
+
+
+window.addEventListener("beforeunload", function (e) {
+    if (localStorage.getItem('round_finished') === 'false') {
+        e.preventDefault();
+    }
+});
 
 // Function to fetch a random subfolder from rooms.txt
 function getRandomID(callback) {
@@ -87,7 +98,7 @@ function result(random, guess) {
 
     // Make a element showing the score out of 5
     const totalScoreElement = document.createElement('div');
-    totalScoreElement.textContent = 'Total score: ' + totalPoints + "/" + round * 5;
+    totalScoreElement.textContent = 'Total score: ' + totalPoints + "/" + oldRound * 5;
     totalScoreElement.classList.add('total-score');
     document.body.appendChild(totalScoreElement);
 
