@@ -6,31 +6,49 @@ function getRandomID(callback) {
             const rows = data.trim().split('\n');
             const lastColumn = rows.map(row => row.split(',').pop());
             const randomIndex = Math.floor(Math.random() * (lastColumn.length - 1)) + 1;
-            const randomRoom = lastColumn[randomIndex];
-            callback(randomRoom);
+            const randomRow = rows[randomIndex].split(',').slice(0, 5);
+
+            callback(randomRow);
         })
-        .catch(error => {
-            console.error('Error fetching subfolders:', error);
-            callback(null);
-        });
 }
 
-function result(ID, guess) {
+function result(random, guess) {
+    const ID = random[4];
+
+    const commonElements = random.filter(element => guess.includes(element));
+    const points = commonElements.length;
+
+    // Log how many points were gained
+    console.log(points);
+
     document.querySelector('#menu').style.transform = 'scale(0)';
-    if (ID == guess) {
-        console.log("correct");
-        document.getElementById("correct-text").style.display = "block";
-        document.getElementById("incorrect-text").style.display = "none";
+    if (points == 5) {
+        document.getElementById("result-text").style.display = "block";
+        document.getElementById("result-text").textContent = "Correct!";
+        document.querySelector('.result-message').style.color = 'green';
+    }
+    else if (points >= 3) {
+        document.getElementById("result-text").style.display = "block";
+        document.getElementById("result-text").textContent = "Almost!";
+        document.querySelector('.result-message').style.color = 'orange';
     }
     else {
-        console.log("incorrect");
-        document.getElementById("incorrect-text").style.display = "block";
-        document.getElementById("correct-text").style.display = "none";
+        document.getElementById("result-text").style.display = "block";
+        document.getElementById("result-text").textContent = "Incorrect!";
+        document.querySelector('.result-message').style.color = 'red';
     }
+
+    // Make a element showing the score out of 5
+    const scoreElement = document.createElement('div');
+    scoreElement.textContent = 'Score: ' + points + '/5';
+    scoreElement.classList.add('score');
+    document.body.appendChild(scoreElement);
 
     // Create a new element to display the randomID
     const randomIDElement = document.createElement('div');
-    randomIDElement.textContent = "Answer ID: " + ID;
+    // add a newline between answer and id
+    randomIDElement.textContent = 'Answer: ' + random[0] + "\n" + random[3];
+
     randomIDElement.classList.add('answer');
 
     // Append the randomIDElement to the body
@@ -54,7 +72,7 @@ getRandomID(function (randomID) {
             "type": "multires",
             "autoLoad": true,
             "multiRes": {
-                "basePath": "images/" + randomID.trim(), // Modify basePath here
+                "basePath": "images/" + randomID[4].trim(), // Modify basePath here
                 "path": "/%l/%s%y%x",
                 "extension": "jpg",
                 "tileResolution": 1,
@@ -65,8 +83,16 @@ getRandomID(function (randomID) {
     } else {
         console.error('Failed to get random subfolder.');
     }
+
+
+
     window.addEventListener("message", function (event) {
         const guess = event.data;
+
+        for (let i = 0; i < guess.length; i++) {
+            guess[i] = guess[i].toString();
+        }
+
         result(randomID, guess);
     });
 });
@@ -140,7 +166,7 @@ fetch('locations.json')
                     const confirmButton = {
                         label: 'Confirm',
                         onClick: () => {
-                            window.parent.postMessage(room.id, '*'); // The '*' allows the message to be sent to any domain.
+                            window.parent.postMessage([location.name, building.name, floor.name, room.name, room.id]);
                         }
                     };
                     const cancelButton = {
