@@ -1,6 +1,7 @@
 
 if (localStorage.getItem('round_finished') === 'false') {
     localStorage.setItem('points', 0);
+    localStorage.setItem('round', 0);
 }
 localStorage.setItem('round_finished', false);
 
@@ -74,11 +75,20 @@ function result(random, guess) {
     }
 
 
-    const Oldpoints = localStorage.getItem("points");
+    const oldPoints = localStorage.getItem("points");
+    const oldRound = localStorage.getItem("round");
 
-    localStorage.setItem("points", parseInt(Oldpoints) + points);
+    localStorage.setItem("points", parseInt(oldPoints) + points);
+    localStorage.setItem("round", parseInt(oldRound) + 1);
 
-    console.log(localStorage.getItem("points"));
+    const totalPoints = localStorage.getItem("points");
+    const round = localStorage.getItem("round");
+
+    // Make a element showing the score out of 5
+    const totalScoreElement = document.createElement('div');
+    totalScoreElement.textContent = 'Total score: ' + totalPoints + "/" + round * 5;
+    totalScoreElement.classList.add('total-score');
+    document.body.appendChild(totalScoreElement);
 
     localStorage.setItem('round_finished', true);
 }

@@ -70,13 +70,24 @@ a:hover {
 
 .score {
     position: absolute;
-    top: 37%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 40px;
     user-select: none;
     font-weight: bold;
 }
+
+.total-score {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    user-select: none;
+    font-weight: bold;
+}
+
 
 
 #header {
