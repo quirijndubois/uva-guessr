@@ -54,6 +54,10 @@ a:hover {
     cursor: pointer;
 }
 
+.next-button:hover {
+    color: rgb(76, 91, 255);
+}
+
 .answer {
     position: absolute;
     top: 30%;
