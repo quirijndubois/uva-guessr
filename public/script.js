@@ -1,5 +1,6 @@
 
-if (localStorage.getItem('round_finished') === 'false') {
+
+if (localStorage.getItem('round_finished') === 'false' || localStorage.getItem('round_finished') === null) {
     localStorage.setItem('points', 0);
     localStorage.setItem('round', 0);
 }
