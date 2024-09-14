@@ -1,3 +1,9 @@
+
+if (localStorage.getItem('round_finished') === 'false') {
+    localStorage.setItem('points', 0);
+}
+localStorage.setItem('round_finished', false);
+
 // Function to fetch a random subfolder from rooms.txt
 function getRandomID(callback) {
     fetch('locations.csv')
@@ -18,8 +24,6 @@ function result(random, guess) {
     const commonElements = random.filter(element => guess.includes(element));
     const points = commonElements.length;
 
-    // Log how many points were gained
-    console.log(points);
 
     document.querySelector('#menu').style.transform = 'scale(0)';
     if (points == 5) {
@@ -63,6 +67,20 @@ function result(random, guess) {
     });
 
     document.body.appendChild(nextButton);
+
+    // check if localStorage has points item
+    if (!localStorage.getItem("points")) {
+        localStorage.setItem("points", 0);
+    }
+
+
+    const Oldpoints = localStorage.getItem("points");
+
+    localStorage.setItem("points", parseInt(Oldpoints) + points);
+
+    console.log(localStorage.getItem("points"));
+
+    localStorage.setItem('round_finished', true);
 }
 
 // Get a random subfolder and set it as the basePath
