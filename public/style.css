@@ -101,28 +101,30 @@ a:hover {
     justify-content: space-between;
     font-weight: bold;
     z-index: 999;
-
+    font-size: 30px;
 }
 
 #header a {
     margin: 10px 40px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #00000061;
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .countdown {
     margin: 10px 40px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #00000061;
-    padding: 10px;
+    padding: 10px 20px;
+
 }
 
 .round {
     margin: 10px 40px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #00000061;
-    padding: 10px;
+    padding: 10px 20px;
+
 }
 
 
