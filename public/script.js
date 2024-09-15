@@ -1,4 +1,5 @@
 
+const roundDuration = 30;
 
 if (localStorage.getItem('round_finished') === null) {
     localStorage.setItem('round_finished', false);
@@ -16,6 +17,10 @@ window.addEventListener("beforeunload", function (e) {
         e.preventDefault();
     }
 });
+
+
+
+
 
 // Function to fetch a random subfolder from rooms.txt
 function getRandomID(callback) {
@@ -37,6 +42,9 @@ function result(random, guess) {
     const commonElements = random.filter(element => guess.includes(element));
     const points = commonElements.length;
 
+    const overlay = document.createElement('div');
+    overlay.classList.add('fullscreen-overlay');
+    document.body.appendChild(overlay);
 
     document.querySelector('#menu').style.transform = 'scale(0)';
     if (points == 5) {
@@ -86,7 +94,6 @@ function result(random, guess) {
         localStorage.setItem("points", 0);
     }
 
-
     const oldPoints = localStorage.getItem("points");
     const oldRound = localStorage.getItem("round");
 
@@ -124,8 +131,6 @@ getRandomID(function (randomID) {
         console.error('Failed to get random subfolder.');
     }
 
-
-
     window.addEventListener("message", function (event) {
         const guess = event.data;
 
@@ -135,6 +140,36 @@ getRandomID(function (randomID) {
 
         result(randomID, guess);
     });
+
+
+    const roundElement = document.querySelector('.round');
+    roundElement.textContent = "Round " + localStorage.getItem('round');
+
+    let countdown = roundDuration;
+    const countdownElement = document.querySelector('.countdown');
+
+    const minutes = Math.floor(countdown / 60);
+    const seconds = countdown % 60;
+    countdownElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    setInterval(() => {
+        if (localStorage.getItem('round_finished') === 'false') {
+
+            countdown -= 1;
+        }
+        const minutes = Math.floor(countdown / 60);
+        const seconds = countdown % 60;
+        countdownElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        if (countdown === 0) {
+            clearInterval();
+        }
+        if (countdown === 0) {
+            const guess = ["", "", "", "", ""];
+            if (localStorage.getItem('round_finished') === 'false') {
+                result(randomID, guess);
+            }
+        }
+    }, 1000);
 });
 
 // Load the locations from the JSON file
@@ -223,4 +258,3 @@ fetch('locations.json')
         displayLocations();
 
     });
-
