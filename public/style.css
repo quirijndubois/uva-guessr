@@ -53,10 +53,12 @@ a:hover {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color .1s ease-in-out;
+
 }
 
 .next-button:hover {
-    color: rgb(76, 91, 255);
+    background-color: #000000a5;
 }
 
 .answer {
@@ -115,6 +117,10 @@ a:hover {
     transform: translate(-30px, 0);
 }
 
+#header a:hover {
+    background-color: #000000a5;
+    color: white;
+}
 
 #footer {
 
@@ -197,7 +203,7 @@ a:hover {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-
+    transition: background-color .1s ease-in-out;
 }
 
 .button:hover {
@@ -214,6 +220,7 @@ a:hover {
     height: 30px;
     align-self: center;
     font-weight: bold;
+    transition: background-color .1s ease-in-out;
 }
 
 .back-button::before {
