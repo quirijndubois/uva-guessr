@@ -1,6 +1,8 @@
 
 const roundDuration = 30;
 
+localStorage.setItem('time_left', roundDuration);
+
 if (localStorage.getItem('round_finished') === null) {
     localStorage.setItem('round_finished', false);
 }
@@ -56,6 +58,11 @@ function result(random, guess) {
         document.getElementById("result-text").style.display = "block";
         document.getElementById("result-text").textContent = "Almost!";
         document.querySelector('.result-message').style.color = 'orange';
+    }
+    else if (localStorage.getItem('time_left') === "0") {
+        document.getElementById("result-text").style.display = "block";
+        document.getElementById("result-text").textContent = "Time up!";
+        document.querySelector('.result-message').style.color = 'red';
     }
     else {
         document.getElementById("result-text").style.display = "block";
@@ -157,6 +164,7 @@ getRandomID(function (randomID) {
 
             countdown -= 1;
         }
+        localStorage.setItem('time_left', countdown);
         const minutes = Math.floor(countdown / 60);
         const seconds = countdown % 60;
         countdownElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
