@@ -98,35 +98,22 @@ a:hover {
     top: 0px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-weight: bold;
     z-index: 999;
     font-size: 30px;
 }
 
+.round,
+.countdown,
 #header a {
-    margin: 10px 40px;
-    border-radius: 30px;
-    background-color: #00000061;
+    margin: 10px 0px;
+    border-radius: 20px;
+    background-color: #00000050;
     padding: 10px 20px;
+    backdrop-filter: blur(20px);
+    transform: translate(-30px, 0);
 }
-
-.countdown {
-    margin: 10px 40px;
-    border-radius: 30px;
-    background-color: #00000061;
-    padding: 10px 20px;
-
-}
-
-.round {
-    margin: 10px 40px;
-    border-radius: 30px;
-    background-color: #00000061;
-    padding: 10px 20px;
-
-}
-
 
 
 #footer {
@@ -157,10 +144,12 @@ a:hover {
     background-color: #00000070;
     border-radius: 20px;
     transform-origin: bottom right;
-    height: 20%;
-    width: 15%;
+    height: 30%;
+    width: 8%;
     overflow-y: scroll;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
+    backdrop-filter: blur(30px);
+
 }
 
 /* Scrollbar for the menu */
@@ -191,25 +180,28 @@ a:hover {
 }
 
 .menu-header {
-    font-size: 18px;
+    font-size: 20px;
+    margin: 10px 0px;
     font-weight: bold;
     color: white;
     text-align: center;
 }
 
 .button {
-    margin: 5px;
+    margin: 3px 0px;
     font-size: 15px;
-    padding: 5px 15px;
+    padding: 10px 0px;
     border: none;
-    border-radius: 5px;
-    background-color: #4c4caf;
+    border-radius: 10px;
+    background-color: #0000003d;
     color: #fff;
     cursor: pointer;
+    font-weight: bold;
+
 }
 
 .button:hover {
-    background-color: #26265a;
+    background-color: #000000a5;
 }
 
 .back-button {
@@ -221,6 +213,7 @@ a:hover {
     width: 30px;
     height: 30px;
     align-self: center;
+    font-weight: bold;
 }
 
 .back-button::before {
@@ -228,7 +221,7 @@ a:hover {
 }
 
 .back-button:hover {
-    background-color: #0000002f;
+    background-color: #000000a5;
 }
 
 .fullscreen-overlay {
@@ -238,4 +231,5 @@ a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(30px);
 }
