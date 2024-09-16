@@ -146,7 +146,6 @@ a:hover {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-
     background-color: #00000070;
     border-radius: 20px;
     transform-origin: bottom right;
