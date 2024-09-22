@@ -117,6 +117,13 @@ function result(random, guess) {
     document.body.appendChild(totalScoreElement);
 
     localStorage.setItem('round_finished', true);
+
+    document.getElementById("result-text").style.animation = "fade-in 1s";
+    overlay.style.animation = "blur 1s";
+    scoreElement.style.animation = "fade-in 1s";
+    randomIDElement.style.animation = "fade-in 1s";
+    nextButton.style.animation = "fade-in 1s";
+    totalScoreElement.style.animation = "fade-in 1s";
 }
 
 // Get a random subfolder and set it as the basePath

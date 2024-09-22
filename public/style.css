@@ -239,3 +239,25 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(30px);
 }
+
+@keyframes blur {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(30px);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
