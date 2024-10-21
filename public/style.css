@@ -150,7 +150,7 @@ a:hover {
     border-radius: 20px;
     transform-origin: bottom right;
     height: 30%;
-    width: 8%;
+    width: 200px;
     overflow-y: scroll;
     transition: transform 0.4s;
     backdrop-filter: blur(30px);
