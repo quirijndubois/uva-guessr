@@ -1,8 +1,6 @@
 # UvA guesser
 ## A fun game where you guess which UvA lecture room you are located in. Inspired by Geoguessr
 
-Click [here](https://uvaguessr.quirijndubois.nl) to try!
-
 ## Hosting
 If you want to host this web-app simply build the docker container with:
 ```bash
