@@ -11,7 +11,7 @@ docker run -p 8080:80 uva-guessr
 ```
 
 This container automatically downloads the panorama images of all uva rooms in locations.csv from https://rooster.uva.nl. And also generates locations.json, required for the guessing menu.
-Next it hosts all of these things with a httpd server.
+Afterwards it spins up an nginx server.
 
 ## Developing
 The easiest way to host this web-app in developer mode is by using [docker-compose](https://docs.docker.com/compose/).
